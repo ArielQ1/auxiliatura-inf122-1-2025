@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Botones</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+  <style>
+    body {
+      height: 97vh;
+      display: grid;
+    }
+  </style>
+</head>
+<body>
+  <div class="container my-5">
+    <ul class="nav nav-pills justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link " href="./index.html">Carrusel</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="./dos.html">Tabs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="./tres.html">Botones</a>
+      </li>
+    </ul>
+  </div>
+  <div class="container border d-flex gap-5 justify-content-center">
+    <button type="button" class="btn btn-outline-success"  data-bs-toggle="modal" data-bs-target="#exampleModal1" >Bandera</button>
+    <button type="button" class="btn btn-outline-danger"  data-bs-toggle="modal" data-bs-target="#exampleModal2">Factorial</button>
+  </div>
+  <!-- Modal 1 -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Bandera de Bolivia</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row bg-danger p-5"></div>
+        <div class="row bg-warning p-5"></div>
+        <div class="row bg-success p-5"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal 2 -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Factorial de un numero</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <label for="numero">Numero</label>
+          <input type="number" id="numero">
+        </div>
+        <div class="my-3">
+          <label for="resultado">Resultado</label>
+          <input type="text" id="resultado" disabled>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" id="generar" class="btn btn-primary">Generar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  const button = document.getElementById("generar")
+  let resultado = document.getElementById("resultado")
+
+  button.addEventListener('click', () => {
+    let numero = parseInt(document.getElementById("numero").value)
+    console.log(numero)
+    let texto = ""
+    let acumulador = 1
+
+    for (let index = 1; index <= numero; index++){
+      acumulador *= index  // acumulador = acumulador * index
+      texto += (index === 1) ? `${index}` : ` x ${index}`
+    }
+    texto += ` = ${acumulador}`
+    resultado.value = texto
+  })
+</script>
+</body>
+</html>
